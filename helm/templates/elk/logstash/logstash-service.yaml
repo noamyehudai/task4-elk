@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: logstash-service
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: logstash
+  ports:
+  - protocol: TCP
+    port: {{ .Values.logstash.port }}
+    targetPort: {{ .Values.logstash.port }}
+  type: ClusterIP
